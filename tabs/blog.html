@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Development Blog - Wine Temperature Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 28px; /* Adjust the font size of the title */
+        }
+        .timeline {
+            width: 80%;
+            margin: 20px auto;
+            position: relative;
+            height: 40px; /* Increased height to accommodate date labels */
+            background-color: #f0f0f0;
+        }
+        .progress {
+            position: absolute;
+            height: 100%;
+            background-color: #3498db;
+        }
+        .timeline-text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #000;
+        }
+        .diary {
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .diary-entry {
+            margin-bottom: 20px;
+        }
+        .entry-date {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .entry-content {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Team Development Blog</h2>
+
+    <div class="timeline">
+        <div class="progress" id="progress"></div>
+        <div class="timeline-text" style="left: 0;" id="startDateText"></div>
+        <div class="timeline-text" style="right: 0;" id="endDateText"></div>
+    </div>
+
+    <div class="diary">
+        <div class="diary-entry">
+            <div class="entry-date">Week 1</div>
+            <div class="entry-content">
+                <p>Team brainstorming session to discuss project goals and requirements.</p>
+                <p>Researched existing wine temperature control systems for inspiration.</p>
+                <p>Outlined initial project plan and assigned roles to team members.</p>
+            </div>
+        </div>
+
+        <div class="diary-entry">
+            <div class="entry-date">Week 2</div>
+            <div class="entry-content">
+                <p>Started development of the user interface for temperature monitoring.</p>
+                <p>Conducted market analysis to identify potential competitors.</p>
+                <p>Tested temperature sensors for accuracy and reliability.</p>
+            </div>
+        </div>
+
+        <!-- Add more diary entries for subsequent weeks as needed -->
+    </div>
+
+    <script>
+        // Calculate percentage of time passed and time remaining
+        const startDate = new Date('2024-01-01'); // Replace with your start date
+        const endDate = new Date('2024-12-31'); // Replace with your end date
+        const currentDate = new Date();
+        const totalDuration = endDate.getTime() - startDate.getTime();
+        const timePassed = currentDate.getTime() - startDate.getTime();
+        const timeRemaining = endDate.getTime() - currentDate.getTime();
+        const percentagePassed = (timePassed / totalDuration) * 100;
+        const percentageRemaining = (timeRemaining / totalDuration) * 100;
+
+        // Set progress bar width
+        const progressBar = document.getElementById('progress');
+        progressBar.style.width = percentagePassed + '%';
+
+        // Set start and end date text
+        const startDateText = document.getElementById('startDateText');
+        const endDateText = document.getElementById('endDateText');
+        startDateText.innerText = formatDate(startDate);
+        endDateText.innerText = formatDate(endDate);
+
+        // Function to format date as "Month Day, Year"
+        function formatDate(date) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+    </script>
+</body>
+</html>

@@ -14,41 +14,102 @@
             text-align: center;
             font-size: 28px; /* Adjust the font size of the title */
         }
-        .project-description {
-            text-align: justify;
+        .timeline {
+            width: 80%;
+            margin: 20px auto;
+            position: relative;
+            height: 20px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        .progress {
+            position: absolute;
+            height: 100%;
+            background-color: #3498db;
+        }
+        .timeline-text {
+            text-align: center;
+            font-size: 16px;
             margin-bottom: 20px;
-            font-size: 18px; /* Adjust the font size of the description */
-            padding-left: 100px; /* Increase the left padding */
-            padding-right: 100px; /* Increase the right padding */
+        }
+        .section {
+            margin-bottom: 50px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .section-content {
+            text-align: justify;
+            font-size: 18px;
+            padding-left: 100px;
+            padding-right: 100px;
         }
         .presentation-container {
             text-align: center;
         }
         .presentation-link {
-            font-size: 100px;
-            color: black; /* Change link color */
-            text-decoration: none; /* Remove underline */
-            display: block; /* Ensure each link is on a new line */
-            margin-bottom: 10px;
+            font-size: 20px;
+            color: black;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <h2>Project Presentation</h2>
-    <div class="project-description">
-        <p>
-            Temperatures are an essential variable on wine production and
-            currently, in most of the winery, the temperature measurements
-            and controls are made locally on the winery. There are a few winery that have this type of control, but it is
-            designed especially for them when the infrastructure is being built. When the winery needs to expand their number of wine vats they
-            need to do a new electrical installation. With this being such an important role, we believe that there needs
-            to be a way of monitoring the temperature anywhere, with an easy
-            implementation so that every wine house can have this type of
-            system without having to do very big investments.
-        </p>
+
+    <div class="section">
+        <div class="section-title">Project Description</div>
+        <div class="section-content">
+            <p>
+                Temperatures are an essential variable on wine production and
+                currently, in most of the winery, the temperature measurements
+                and controls are made locally on the winery. There are a few winery that have this type of control, but it is
+                designed especially for them when the infrastructure is being built. When the winery needs to expand their number of wine vats they
+                need to do a new electrical installation. With this being such an important role, we believe that there needs
+                to be a way of monitoring the temperature anywhere, with an easy
+                implementation so that every wine house can have this type of
+                system without having to do very big investments.
+            </p>
+        </div>
     </div>
-    <div class="presentation-container">
-        <a class="presentation-link" href="../powerpoint/project-proposal.pdf" target="_blank">PDF Presentation</a>
+
+    <div class="section">
+        <div class="section-title">PDF Presentation</div>
+        <div class="presentation-container">
+            <a class="presentation-link" href="../powerpoint/project-proposal.pdf" target="_blank">PDF Presentation</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Blog</div>
+        <div class="timeline" onclick="openBlog()">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="timeline-text">Click the timeline to open the blog</div>
+
+        <script>
+            function openBlog() {
+                window.open('blog.html', '_blank');
+            }
+
+            // Calculate percentage of time passed and time remaining
+            const startDate = new Date('2024-01-10'); // Replace with your start date
+            const endDate = new Date('2024-06-05'); // Replace with your end date
+            const currentDate = new Date();
+            const totalDuration = endDate.getTime() - startDate.getTime();
+            const timePassed = currentDate.getTime() - startDate.getTime();
+            const timeRemaining = endDate.getTime() - currentDate.getTime();
+            const percentagePassed = (timePassed / totalDuration) * 100;
+            const percentageRemaining = (timeRemaining / totalDuration) * 100;
+
+            // Set progress bar width
+            const progressBar = document.getElementById('progress');
+            progressBar.style.width = percentagePassed + '%';
+        </script>
     </div>
 </body>
 </html>
