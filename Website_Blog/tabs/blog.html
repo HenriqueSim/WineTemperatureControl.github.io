@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Development Blog - Wine Temperature Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 28px; /* Adjust the font size of the title */
+        }
+        .timeline {
+            width: 80%;
+            margin: 20px auto;
+            position: relative;
+            height: 40px; /* Increased height to accommodate date labels */
+            background-color: #f0f0f0;
+        }
+        .progress {
+            position: absolute;
+            height: 100%;
+            background-color: #3498db;
+        }
+        .timeline-text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #000;
+        }
+        .diary {
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .diary-entry {
+            margin-bottom: 20px;
+        }
+        .entry-date {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .entry-content {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Team Development Blog</h2>
+
+    <div class="timeline">
+        <div class="progress" id="progress"></div>
+        <div class="timeline-text" style="left: 0;" id="startDateText"></div>
+        <div class="timeline-text" style="right: 0;" id="endDateText"></div>
+    </div>
+
+    <div class="diary">
+        <div class="diary-entry">
+            <div class="entry-date">Week 1 (February 18)</div>
+            <div class="entry-content">
+                <p>Team brainstorming session to discuss project goals and requirements.</p>
+                <p>Researched existing wine temperature control systems for inspiration.</p>
+                <p>Outlined initial project plan and assigned roles to team members.</p>
+            </div>
+        </div>
+
+        <div class="diary-entry">
+            <div class="entry-date">Week 2 (February 25)</div>
+            <div class="entry-content">
+                <p>Conducted research on the essential equipment needed for prototyping development.</p>
+                <p>Established task lists and set deadlines for the initial weeks of each department.</p>
+                <p>Initiated the website development process.</p>
+            </div>
+        </div>
+
+        <div class="diary-entry">
+            <div class="entry-date">Week 3 (March 3)</div>
+            <div class="entry-content">
+                <p>Completed and delivered the initial website mockup.</p>
+                <p>Each department began working on their tasks.</p>
+                <p>The application designed for winery members now has its core functionalities operational.</p>
+                <p>Fixed several issues with the website, including the addition of a blog section.</p>
+            </div>
+        </div>
+
+        <div class="diary-entry">
+            <div class="entry-date">Week 4 (March 10)</div>
+            <div class="entry-content">
+                <p>The application designed for winery members integrates a login feature for the monitoring system.</p>
+                <p>Initiated development of monitoring website.</p>
+                <p>Team researched database solutions.</p>
+            </div>
+        </div>
+
+        <div class="diary-entry">
+            <div class="entry-date">Week 5 (March 17)</div>
+            <div class="entry-content">
+                <p>Team consulted with oenologist João Fonseca (Quinta do Gardilo winery) to assess industry relevance of proposed solution.</p>
+                <p>Team researched server hosting options, implementation methods, and internet communication protocols.</p>
+                <p>The team advanced with the development of the monitoring website, winery app, and main controller.</p>
+            </div>
+        </div>
+
+        <div class="diary-entry">
+            <div class="entry-date">Week 6 (March 24)</div>
+            <div class="entry-content">
+                <p>The team initiated preparation of the ElectroCap mid-program pitch deck.</p>
+                <p>The team adjusted some of the deadlines outlined in the timeline.</p>
+            </div>
+        </div>
+
+        <div class="diary-entry">
+            <div class="entry-date">Week 7 (April 7)</div>
+            <div class="entry-content">
+                <p>The team refined the ElectroCap mid-program pitch deck based on valuable feedback from our professor, ensuring alignment with our objectives and audience expectations, and successfully delivered the updated version.</p>
+                <p>The team engaged in another insightful conversation with an oenologist, understanding valuable insights to further refine our project approach. <a href="conversation_1.html">Click to see details</a> </p>
+            </div>
+        </div>
+
+        <div class="diary-entry">
+            <div class="entry-date">Week 8 (April 14)</div>
+            <div class="entry-content">
+                <p>EletroCap mid-program pitch presentation.</p>
+                <p>The team received the material.</p>
+            </div>
+        </div>
+
+        <div class="diary-entry">
+            <div class="entry-date">Week 9 (April 21)</div>
+            <div class="entry-content">
+                <p>The hardware department successfully enabled internet communication between the ESP32 and the computer, transmitting temperature values to the database.  -> Miguel Lopes & Miguel Velo</p>
+                <p>The monitoring website is now prepared to display temperatures from multiple wine vats.  -> David Antunes & Henrique Póvoa</p>
+                <p>The winery application features a 'logs report' system enabling users to track changes made to each wine vat by specific users.  -> Gonçalo Almeida & Henrique Simões</p>
+            </div>
+        </div>
+
+        <div class="diary-entry">
+            <div class="entry-date">Week 10 (April 28)</div>
+            <div class="entry-content">
+                <p>The hardware and winery app departments collaborated to establish a connection between the winery app and the ESP32, transmitting temperature limits. -> Miguel Lopes, Miguel Velo & Henrique Simões</p>
+                <p>The winery application interface received an upgrade for enhanced user-friendliness and aesthetics. -> Gonçalo Almeida</p>
+            </div>
+        </div>
+
+        <div class="diary-entry">
+            <div class="entry-date">Week 11 (May 5)</div>
+            <div class="entry-content">
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+
+
+        <!-- Add more diary entries for subsequent weeks as needed -->
+    </div>
+
+    <script>
+        // Calculate percentage of time passed and time remaining
+        const startDate = new Date('2024-02-18'); // Replace with your start date
+        const endDate = new Date('2024-06-05'); // Replace with your end date
+        const currentDate = new Date();
+        const totalDuration = endDate.getTime() - startDate.getTime();
+        const timePassed = currentDate.getTime() - startDate.getTime();
+        const timeRemaining = endDate.getTime() - currentDate.getTime();
+        const percentagePassed = (timePassed / totalDuration) * 100;
+        const percentageRemaining = (timeRemaining / totalDuration) * 100;
+
+        // Set progress bar width
+        const progressBar = document.getElementById('progress');
+        progressBar.style.width = percentagePassed + '%';
+
+        // Set start and end date text
+        const startDateText = document.getElementById('startDateText');
+        const endDateText = document.getElementById('endDateText');
+        startDateText.innerText = formatDate(startDate);
+        endDateText.innerText = formatDate(endDate);
+
+        // Function to format date as "Month Day, Year"
+        function formatDate(date) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+    </script>
+</body>
+</html>
